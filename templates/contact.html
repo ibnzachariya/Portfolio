@@ -53,13 +53,15 @@
             <div class="col-lg-7">
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
+                        <div id="form-status" role="status" aria-live="polite"></div>
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% for category, message in messages %}
                         <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
                         {% endfor %}
                         {% endwith %}
 
-                        <form method="post" action="{{ url_for('contact') }}" novalidate>
+                        <form id="contact-form" method="post" action="{{ url_for('contact') }}" novalidate
+                              {% if formspree_id %}data-formspree="{{ formspree_id }}"{% endif %}>
                             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                             <!-- Spam trap: hidden from people, bots fill it in -->
                             <div class="hp-field" aria-hidden="true">
@@ -85,7 +87,7 @@
                                           class="form-control {% if errors.message %}is-invalid{% endif %}">{{ form.message }}</textarea>
                                 {% if errors.message %}<div class="invalid-feedback">{{ errors.message }}</div>{% endif %}
                             </div>
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" id="contact-submit" class="btn btn-success">
                                 <i class="bi bi-send me-1" aria-hidden="true"></i> Send Message
                             </button>
                         </form>
@@ -95,4 +97,83 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* Send the message straight from the browser to Formspree (the method Formspree supports).
+   If JavaScript is off or no FORMSPREE_ID is set, the form falls back to the Flask route. */
+(function () {
+    const form = document.getElementById("contact-form");
+    const formId = form && form.dataset.formspree;
+    if (!formId) return;
+
+    const status = document.getElementById("form-status");
+    const button = document.getElementById("contact-submit");
+    const emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const fallbackEmail = {{ site.email | tojson }};
+
+    function show(kind, text) {
+        status.innerHTML = "";
+        const div = document.createElement("div");
+        div.className = "alert alert-" + kind;
+        div.textContent = text;
+        status.appendChild(div);
+        status.scrollIntoView({behavior: "smooth", block: "center"});
+    }
+    function setError(field, message) {
+        const input = form.elements[field];
+        let fb = input.parentElement.querySelector(".invalid-feedback");
+        if (!fb) { fb = document.createElement("div"); fb.className = "invalid-feedback"; input.after(fb); }
+        fb.textContent = message || "";
+        input.classList.toggle("is-invalid", !!message);
+    }
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const name = form.elements.name.value.trim();
+        const email = form.elements.email.value.trim();
+        const message = form.elements.message.value.trim();
+
+        const errors = {
+            name: name.length < 2 ? "Please enter your name." : "",
+            email: emailRe.test(email) ? "" : "Please enter a valid email address.",
+            message: message.length < 10 ? "Please write a message (at least 10 characters)." : ""
+        };
+        Object.keys(errors).forEach(k => setError(k, errors[k]));
+        if (Object.values(errors).some(Boolean)) return;
+
+        button.disabled = true;
+        const label = button.innerHTML;
+        button.textContent = "Sending…";
+        try {
+            const res = await fetch("https://formspree.io/f/" + encodeURIComponent(formId), {
+                method: "POST",
+                headers: {"Accept": "application/json", "Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: name, email: email, message: message,
+                    _subject: "Portfolio message from " + name,
+                    _gotcha: form.elements.website.value
+                })
+            });
+            if (res.ok) {
+                form.reset();
+                show("success", "Thanks! Your message has been sent. I'll get back to you soon.");
+            } else {
+                const data = await res.json().catch(() => ({}));
+                const reason = (data.errors || []).map(x => x.message).join(" ");
+                console.error("Formspree error", res.status, data);
+                show("danger", "Sorry, the message couldn't be sent" + (reason ? " (" + reason + ")" : "") +
+                     ". Please email me directly at " + fallbackEmail + ".");
+            }
+        } catch (err) {
+            console.error(err);
+            show("danger", "Network problem — please check your connection or email me at " + fallbackEmail + ".");
+        } finally {
+            button.disabled = false;
+            button.innerHTML = label;
+        }
+    });
+})();
+</script>
 {% endblock %}

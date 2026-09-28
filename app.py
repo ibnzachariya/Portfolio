@@ -10,6 +10,7 @@ import os
 import re
 import secrets
 import smtplib
+import urllib.error
 import urllib.request
 from datetime import date
 from email.message import EmailMessage
@@ -64,7 +65,8 @@ def get_project(slug):
 @app.context_processor
 def inject_globals():
     """Make site settings and the current year available in every template."""
-    return {"site": load_json("site.json"), "current_year": date.today().year}
+    return {"site": load_json("site.json"), "current_year": date.today().year,
+            "formspree_id": os.environ.get("FORMSPREE_ID", "").strip()}
 
 
 def csrf_token():
@@ -121,9 +123,15 @@ def send_via_formspree(name, email, message):
                           "_subject": f"Portfolio message from {name}"}).encode()
     req = urllib.request.Request(
         f"https://formspree.io/f/{form_id}", data=payload, method="POST",
-        headers={"Content-Type": "application/json", "Accept": "application/json"})
-    with urllib.request.urlopen(req, timeout=10) as resp:
-        return 200 <= resp.status < 300
+        headers={"Content-Type": "application/json", "Accept": "application/json",
+                 "User-Agent": "Mozilla/5.0 (portfolio contact form)",
+                 "Referer": request.host_url})
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return 200 <= resp.status < 300
+    except urllib.error.HTTPError as err:  # log Formspree's reason (visible in Vercel logs)
+        log.error("Formspree rejected the message: %s %s", err.code, err.read()[:500])
+        return False
 
 
 def send_via_smtp(name, email, message):
