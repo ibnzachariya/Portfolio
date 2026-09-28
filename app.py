@@ -54,6 +54,13 @@ def load_json(name):
         return json.load(fh)
 
 
+def get_formspree_id():
+    """Formspree form ID: from the FORMSPREE_ID env variable, or "formspree_id" in data/site.json.
+    Accepts either the short ID (e.g. xyzabcde) or the full https://formspree.io/f/xyzabcde link."""
+    raw = (os.environ.get("FORMSPREE_ID") or load_json("site.json").get("formspree_id") or "").strip()
+    return raw.rstrip("/").split("/")[-1] if raw else ""
+
+
 def get_projects():
     return load_json("projects.json")
 
@@ -66,7 +73,7 @@ def get_project(slug):
 def inject_globals():
     """Make site settings and the current year available in every template."""
     return {"site": load_json("site.json"), "current_year": date.today().year,
-            "formspree_id": os.environ.get("FORMSPREE_ID", "").strip()}
+            "formspree_id": get_formspree_id()}
 
 
 def csrf_token():
@@ -116,7 +123,7 @@ def oil_gas_platform():
 # Contact form
 # --------------------------------------------------------------------------- #
 def send_via_formspree(name, email, message):
-    form_id = os.environ.get("FORMSPREE_ID", "").strip()
+    form_id = get_formspree_id()
     if not form_id:
         return False
     payload = json.dumps({"name": name, "email": email, "message": message,
