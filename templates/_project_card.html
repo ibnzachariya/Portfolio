@@ -1,0 +1,23 @@
+{# One project card. Expects `p` (a project from data/projects.json). #}
+<article class="card project-card shadow-sm border-0 h-100">
+    <a href="{{ url_for('project_detail', slug=p.slug) }}" class="project-thumb" tabindex="-1" aria-hidden="true">
+        {% if p.image %}
+        <img src="{{ url_for('static', filename=p.image) }}" alt="" loading="lazy">
+        {% else %}
+        <span class="project-thumb-placeholder"><i class="bi {{ p.icon or 'bi-folder2-open' }}"></i></span>
+        {% endif %}
+    </a>
+    <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+            <span class="small text-success fw-semibold">{{ p.category }}</span>
+            {% if p.status %}<span class="badge text-bg-warning">{{ p.status }}</span>{% endif %}
+        </div>
+        <h3 class="h5 fw-bold">
+            <a href="{{ url_for('project_detail', slug=p.slug) }}" class="stretched-link text-reset text-decoration-none">{{ p.title }}</a>
+        </h3>
+        <p class="text-muted flex-grow-1">{{ p.summary }}</p>
+        <div class="d-flex flex-wrap gap-1">
+            {% for t in p.tech %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+    </div>
+</article>

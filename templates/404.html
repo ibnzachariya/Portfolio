@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{% if server_error %}Something went wrong{% else %}Page not found{% endif %}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container text-center py-5">
+        <p class="display-1 fw-bold text-success mb-0">{% if server_error %}500{% else %}404{% endif %}</p>
+        <h1 class="h2 fw-bold">{% if server_error %}Something went wrong on my side{% else %}This page doesn't exist{% endif %}</h1>
+        <p class="text-muted">
+            {% if server_error %}Please try again in a moment.{% else %}The link may be old or mistyped.{% endif %}
+        </p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{{ url_for('home') }}" class="btn btn-success">Go home</a>
+            <a href="{{ url_for('projects') }}" class="btn btn-outline-success">See projects</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

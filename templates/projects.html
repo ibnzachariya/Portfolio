@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Projects{% endblock %}
+{% block description %}Software projects by {{ site.name }}: Flask backends, data tools, desktop applications and UI design.{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold">My Projects</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 720px;">
+            Web backends, desktop applications, data tools and design work — each with the problem, what I built and the stack.
+        </p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for p in projects %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">{% include "_project_card.html" %}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }}{% endblock %}
+{% block description %}{{ project.summary }}{% endblock %}
+{% block og_image %}{{ url_for('static', filename=project.image or site.profile_image, _external=True) }}{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="bg-dark text-white py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-dark mb-4">
+                <li class="breadcrumb-item"><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ project.title }}</li>
+            </ol>
+        </nav>
+        <div class="row align-items-center gy-4">
+            <div class="{% if project.image %}col-lg-6{% else %}col-lg-9{% endif %}">
+                <p class="text-success fw-semibold mb-2">{{ project.category }}
+                    {% if project.status %}<span class="badge text-bg-warning ms-2">{{ project.status }}</span>{% endif %}
+                </p>
+                <h1 class="display-6 fw-bold">{{ project.title }}</h1>
+                <p class="lead mt-3 text-white-50">{{ project.summary }}</p>
+
+                {% set links = project.links or {} %}
+                {% if links.live or links.github or links.download %}
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    {% if links.live %}<a href="{{ links.live }}" class="btn btn-success" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i> Live site</a>{% endif %}
+                    {% if links.github %}<a href="{{ links.github }}" class="btn btn-outline-light" target="_blank" rel="noopener"><i class="bi bi-github me-1" aria-hidden="true"></i> Source code</a>{% endif %}
+                    {% if links.download %}<a href="{{ links.download if links.download.startswith('http') else url_for('static', filename=links.download) }}" class="btn btn-outline-light"><i class="bi bi-download me-1" aria-hidden="true"></i> Download</a>{% endif %}
+                </div>
+                {% endif %}
+            </div>
+            {% if project.image %}
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename=project.image) }}" alt="Screenshot of {{ project.title }}" class="img-fluid rounded shadow">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="py-5">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="{% if project.role %}col-lg-8{% else %}col-12{% endif %}">
+                <h2 class="fw-bold mb-3">Overview</h2>
+                <p class="lead">{{ project.overview or project.summary }}</p>
+            </div>
+            {% if project.role %}
+            <div class="col-lg-4">
+                <div class="role-card">
+                    <h2 class="h6 text-uppercase text-success fw-bold">My role</h2>
+                    <p class="mb-0">{{ project.role }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% if project.features %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="fw-bold text-center mb-5">Key Features</h2>
+        <div class="row g-4">
+            {% for f in project.features %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h5 fw-bold">{{ f.title }}</h3>
+                        <p class="mb-0 text-muted">{{ f.text }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row gy-5">
+            <div class="{% if project.challenges %}col-lg-5{% else %}col-12 text-center{% endif %}">
+                <h2 class="fw-bold mb-3">Technologies</h2>
+                <div class="d-flex flex-wrap gap-2 {% if not project.challenges %}justify-content-center{% endif %}">
+                    {% for t in project.tech %}<span class="tag tag-lg">{{ t }}</span>{% endfor %}
+                </div>
+            </div>
+            {% if project.challenges %}
+            <div class="col-lg-7">
+                <h2 class="fw-bold mb-3">Challenges &amp; Solutions</h2>
+                <p class="mb-0">{{ project.challenges }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="py-4 border-top">
+    <div class="container d-flex justify-content-between flex-wrap gap-3">
+        <a href="{{ url_for('projects') }}" class="link-success fw-semibold">← All projects</a>
+        <a href="{{ url_for('contact') }}" class="link-success fw-semibold">Want something similar? Get in touch →</a>
+    </div>
+</section>
+{% endblock %}

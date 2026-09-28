@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+{% block description %}Get in touch with {{ site.name }} about roles, freelance projects or collaborations.{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">Contact Me</h1>
+            <p class="text-muted">Open to roles, freelance projects and collaborations. I usually reply within a day or two.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-4">Get In Touch</h2>
+                        <ul class="list-unstyled contact-list mb-0">
+                            <li>
+                                <i class="bi bi-envelope-fill text-success" aria-hidden="true"></i>
+                                <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+                            </li>
+                            {% if site.whatsapp %}
+                            <li>
+                                <i class="bi bi-whatsapp text-success" aria-hidden="true"></i>
+                                <a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">{{ site.whatsapp_display }}</a>
+                            </li>
+                            {% endif %}
+                            {% if site.linkedin %}
+                            <li>
+                                <i class="bi bi-linkedin text-success" aria-hidden="true"></i>
+                                <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn profile</a>
+                            </li>
+                            {% endif %}
+                            {% if site.github %}
+                            <li>
+                                <i class="bi bi-github text-success" aria-hidden="true"></i>
+                                <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub profile</a>
+                            </li>
+                            {% endif %}
+                            {% if site.location %}
+                            <li>
+                                <i class="bi bi-geo-alt-fill text-success" aria-hidden="true"></i>
+                                <span>{{ site.location }}</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                        {% endwith %}
+
+                        <form method="post" action="{{ url_for('contact') }}" novalidate>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <!-- Spam trap: hidden from people, bots fill it in -->
+                            <div class="hp-field" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your name</label>
+                                <input type="text" id="name" name="name" value="{{ form.name }}" required maxlength="100"
+                                       autocomplete="name" class="form-control {% if errors.name %}is-invalid{% endif %}">
+                                {% if errors.name %}<div class="invalid-feedback">{{ errors.name }}</div>{% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" id="email" name="email" value="{{ form.email }}" required maxlength="200"
+                                       autocomplete="email" class="form-control {% if errors.email %}is-invalid{% endif %}">
+                                {% if errors.email %}<div class="invalid-feedback">{{ errors.email }}</div>{% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" rows="6" required maxlength="5000"
+                                          class="form-control {% if errors.message %}is-invalid{% endif %}">{{ form.message }}</textarea>
+                                {% if errors.message %}<div class="invalid-feedback">{{ errors.message }}</div>{% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-send me-1" aria-hidden="true"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

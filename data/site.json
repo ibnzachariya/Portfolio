@@ -1,0 +1,149 @@
+{
+  "name": "Abdulfatai Ibn Zachariya",
+  "short_name": "Abdulfatai",
+  "title": "Python & Backend Developer",
+  "tagline": "I build practical software — web backends, data tools and desktop applications — that solve real operational problems.",
+  "description": "Portfolio of Abdulfatai Ibn Zachariya, a Python & Backend Developer building Flask web apps, data tools and desktop software.",
+  "typing_roles": [
+    "Python Developer",
+    "Backend Developer (Flask)",
+    "Data Analyst"
+  ],
+  "email": "zaabdulfatai@gmail.com",
+  "whatsapp": "2348031528212",
+  "whatsapp_display": "+234 803 152 8212",
+  "github": "https://github.com/ibnzachariya",
+  "linkedin": "https://www.linkedin.com/in/abdulfatai-zachariya-145526374",
+  "location": "Abuja, Nigeria",
+  "cv_file": "files/Abdulfatai_CV.pdf",
+  "profile_image": "images/profile.jpg",
+  "about": [
+    "I'm a Python developer who came into software from Analytical Chemistry (MTech, Federal University of Technology, Minna). Lab work taught me to be methodical, to trust data, and to keep digging until a problem is actually solved — habits I bring to every codebase.",
+    "Today I build backends with Flask, SQLAlchemy and PostgreSQL, data tools with Pandas, and desktop applications with Tkinter. I recently built Cliqo, a web and mobile marketplace for finding trusted service providers, and I was the Backend Developer on SiteLedger, a fuel and asset operations platform built by a multi-team capstone through the NCDMB Digitalization Initiative (NDI).",
+    "I'm also a CAPM-certified project manager, hold an International Executive Certificate in Safety Management, and trained as a graphic designer — so I'm comfortable planning work, thinking about risk, and caring about how things look."
+  ],
+  "journey": [
+    {
+      "icon": "bi-eyedropper",
+      "title": "Analytical Chemistry",
+      "text": "BSc Chemistry (BUK) and MTech Analytical Chemistry (FUT Minna). Research, lab analysis and rigorous problem-solving."
+    },
+    {
+      "icon": "bi-mortarboard",
+      "title": "Teaching",
+      "text": "Classroom teacher at L.G.E.A Demonstration College (2019–2025) — explaining complex ideas simply."
+    },
+    {
+      "icon": "bi-code-slash",
+      "title": "Software Development",
+      "text": "Python, Flask and PostgreSQL through the NCDMB Digitalization Initiative (NDI) and real team projects."
+    },
+    {
+      "icon": "bi-kanban",
+      "title": "Project Management",
+      "text": "CAPM certified. Planning, tracking and delivering work with Notion, ClickUp and Slack."
+    }
+  ],
+  "skills": [
+    {
+      "group": "Backend",
+      "icon": "bi-server",
+      "items": [
+        "Python",
+        "Flask",
+        "SQLAlchemy",
+        "REST APIs",
+        "PostgreSQL",
+        "SQL"
+      ]
+    },
+    {
+      "group": "Data & Automation",
+      "icon": "bi-bar-chart",
+      "items": [
+        "Pandas",
+        "Matplotlib",
+        "Selenium",
+        "BeautifulSoup"
+      ]
+    },
+    {
+      "group": "Desktop & Frontend",
+      "icon": "bi-window",
+      "items": [
+        "Tkinter",
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "Jinja"
+      ]
+    },
+    {
+      "group": "Tools & Delivery",
+      "icon": "bi-tools",
+      "items": [
+        "Git & GitHub",
+        "Vercel",
+        "Notion",
+        "ClickUp",
+        "Graphic Design"
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "value": "MTech",
+      "label": "Analytical Chemistry"
+    },
+    {
+      "value": "CAPM",
+      "label": "Certified Project Manager"
+    },
+    {
+      "value": "IECSM",
+      "label": "Safety Management Certified"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "CAPM®",
+      "issuer": "Project Management Institute (PMI)",
+      "text": "Certified Associate in Project Management",
+      "year": "",
+      "file": ""
+    },
+    {
+      "title": "International Executive Certificate in Safety Management (IECSM)",
+      "issuer": "La Plage Meta Verse (LPMV)",
+      "text": "Risk assessment, hazard control, safety leadership and emergency response planning across oil & gas, construction, aviation and maritime.",
+      "year": "2026",
+      "file": "images/certificates/safety-management.jpg"
+    },
+    {
+      "title": "Graphic Design",
+      "issuer": "V.S.L Concepts Digital Marketing Agency",
+      "text": "Certificate of completion",
+      "year": "2021",
+      "file": "images/certificates/graphic-design.jpg"
+    },
+    {
+      "title": "Mandatory Pre-Induction Building Program (MPCBP)",
+      "issuer": "Chartered Institute of Loan & Risk Management of Nigeria (CILRM)",
+      "text": "Entrepreneurship development, loan management and risk management in Nigeria",
+      "year": "2019",
+      "file": "images/certificates/cilrm.jpg"
+    }
+  ],
+  "education": [
+    {
+      "degree": "MTech, Analytical Chemistry",
+      "school": "Federal University of Technology, Minna",
+      "year": "2025"
+    },
+    {
+      "degree": "BSc, Chemistry",
+      "school": "Bayero University Kano",
+      "year": "2018"
+    }
+  ]
+}

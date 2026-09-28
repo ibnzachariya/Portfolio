@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+{% block description %}About {{ site.name }} — from analytical chemistry to Python and backend development.{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">About Me</h1>
+            <p class="text-muted">My background, how I work, and what I'm building now.</p>
+        </div>
+
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-4 text-center" data-aos="fade-right">
+                <img src="{{ url_for('static', filename=site.profile_image) }}"
+                     alt="Portrait of {{ site.name }}" class="profile-img profile-img-sm" width="320" height="320">
+            </div>
+            <div class="col-lg-8" data-aos="fade-left">
+                <h2 class="fw-bold">{{ site.name }}</h2>
+                <p class="h5 text-success mb-4">{{ site.title }}
+                    {% if site.location %}<span class="text-muted fs-6 ms-2"><i class="bi bi-geo-alt" aria-hidden="true"></i> {{ site.location }}</span>{% endif %}
+                </p>
+                {% for para in site.about %}
+                <p class="{% if loop.first %}lead{% endif %}">{{ para }}</p>
+                {% endfor %}
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="{{ url_for('static', filename=site.cv_file) }}" class="btn btn-success" download>
+                        <i class="bi bi-download me-1" aria-hidden="true"></i> Download CV
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline-success">Contact me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5"><h2 class="fw-bold">My Journey</h2></div>
+        <div class="row g-4">
+            {% for step in site.journey %}
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <i class="bi {{ step.icon }} display-5 text-success" aria-hidden="true"></i>
+                        <h3 class="h5 mt-3">{{ step.title }}</h3>
+                        <p class="text-muted mb-0">{{ step.text }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row gy-5">
+            <div class="col-lg-4">
+                <h2 class="fw-bold mb-4">Education</h2>
+                {% for e in site.education %}
+                <div class="edu-item">
+                    <h3 class="h6 fw-bold mb-1">{{ e.degree }}</h3>
+                    <p class="small text-muted mb-0">{{ e.school }}{% if e.year %} · {{ e.year }}{% endif %}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-8">
+                <h2 class="fw-bold mb-4">Certifications</h2>
+                {% set cert_col = "col-md-6" %}
+                {% include "_certifications.html" %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

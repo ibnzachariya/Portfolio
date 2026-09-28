@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-section py-5">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-7 order-2 order-lg-1">
+                <p class="eyebrow">Hi, I'm</p>
+                <h1 class="display-4 fw-bold mb-2">{{ site.name }}</h1>
+                <p class="h3 text-success fw-semibold mb-4">
+                    <span id="typing-text">{{ site.title }}</span>
+                </p>
+                <p class="lead text-muted">{{ site.tagline }}</p>
+
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="{{ url_for('projects') }}" class="btn btn-success btn-lg">View Projects</a>
+                    <a href="{{ url_for('static', filename=site.cv_file) }}" class="btn btn-outline-success btn-lg" download>
+                        <i class="bi bi-download me-1" aria-hidden="true"></i> Download CV
+                    </a>
+                </div>
+
+                <div class="row mt-5 g-3 highlights">
+                    {% for h in site.highlights %}
+                    <div class="col-4">
+                        <div class="fw-bold text-success fs-4">{{ h.value }}</div>
+                        <div class="small text-muted">{{ h.label }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-5 order-1 order-lg-2 text-center">
+                <img src="{{ url_for('static', filename=site.profile_image) }}"
+                     alt="Portrait of {{ site.name }}" class="profile-img" width="420" height="420">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">What I Work With</h2>
+            <p class="text-muted">Tools I use to design, build and ship software.</p>
+        </div>
+        <div class="row g-4">
+            {% for group in site.skills %}
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+                <div class="skill-card h-100">
+                    <i class="bi {{ group.icon }} text-success fs-2" aria-hidden="true"></i>
+                    <h3 class="h5 fw-bold mt-2">{{ group.group }}</h3>
+                    <div class="d-flex flex-wrap gap-1 mt-3">
+                        {% for s in group["items"] %}<span class="tag">{{ s }}</span>{% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge bg-success fs-6"><i class="bi bi-star-fill me-1" aria-hidden="true"></i> Featured Project</span>
+            <h2 class="fw-bold mt-3">{{ featured.title }}</h2>
+            <p class="text-muted mx-auto" style="max-width: 720px;">{{ featured.summary }}</p>
+        </div>
+        <div class="row align-items-center mt-4 gy-4">
+            <div class="col-lg-6">
+                {% if featured.image %}
+                <img src="{{ url_for('static', filename=featured.image) }}"
+                     alt="Screenshot of {{ featured.title }}" class="img-fluid rounded shadow" loading="lazy">
+                {% endif %}
+            </div>
+            <div class="col-lg-6">
+                {% for f in featured.features %}
+                <div class="feature-card"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ f.title }}</div>
+                {% endfor %}
+                <a href="{{ url_for('project_detail', slug=featured.slug) }}" class="btn btn-success mt-3">Read the case study</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MORE PROJECTS -->
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
+            <h2 class="fw-bold mb-0">More Projects</h2>
+            <a href="{{ url_for('projects') }}" class="link-success fw-semibold">See all {{ projects | length }} projects →</a>
+        </div>
+        <div class="row g-4">
+            {% for p in projects if p.slug != featured.slug %}
+            {% if loop.index <= 3 %}
+            <div class="col-md-6 col-lg-4">{% include "_project_card.html" %}</div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Certifications</h2>
+            <p class="text-muted">Professional certifications and continuous learning.</p>
+        </div>
+        {% include "_certifications.html" %}
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="py-5 bg-success text-white">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold">Let's Build Something Together</h2>
+        <p class="lead mt-3 mx-auto" style="max-width: 720px;">
+            Need a web backend, a data tool, an automation script or a desktop application?
+            I'm open to roles, freelance work and collaborations.
+        </p>
+        <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg mt-3">Get in touch</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+    const roles = {{ site.typing_roles | tojson }};
+    const el = document.getElementById("typing-text");
+    if (!el || !roles.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.classList.add("typing");
+    let r = 0, i = 0, deleting = false;
+    function tick() {
+        const word = roles[r];
+        el.textContent = word.substring(0, i);
+        if (!deleting && i === word.length) { deleting = true; return setTimeout(tick, 1600); }
+        if (deleting && i === 0) { deleting = false; r = (r + 1) % roles.length; }
+        i += deleting ? -1 : 1;
+        setTimeout(tick, deleting ? 45 : 90);
+    }
+    el.textContent = "";
+    tick();
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{# Certification cards. Add or edit them in data/site.json → "certifications". #}
+<div class="row g-4">
+    {% for c in site.certifications %}
+    <div class="{{ cert_col | default("col-md-6 col-lg-3") }}" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+        <div class="card cert-card shadow-sm border-0 h-100">
+            <div class="card-body d-flex flex-column">
+                <i class="bi bi-award-fill text-success fs-1" aria-hidden="true"></i>
+                <h3 class="h6 fw-bold mt-2 mb-1">{{ c.title }}</h3>
+                <p class="small text-success fw-semibold mb-2">{{ c.issuer }}{% if c.year %} · {{ c.year }}{% endif %}</p>
+                <p class="small text-muted flex-grow-1 mb-3">{{ c.text }}</p>
+                {% if c.file %}
+                <a href="{{ url_for('static', filename=c.file) }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-success align-self-start">
+                    <i class="bi bi-eye me-1" aria-hidden="true"></i> View certificate
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

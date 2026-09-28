@@ -1,0 +1,14 @@
+{# Social icons. A link only shows once its value is filled in data/site.json. #}
+<div class="socials d-flex gap-3 mt-2">
+    {% if site.github %}
+    <a href="{{ site.github }}" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+    {% endif %}
+    {% if site.linkedin %}
+    <a href="{{ site.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+    {% endif %}
+    <a href="mailto:{{ site.email }}" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+    {% if site.whatsapp %}
+    <a href="https://wa.me/{{ site.whatsapp }}?text={{ ('Hello ' ~ site.short_name ~ ', I visited your portfolio.') | urlencode }}"
+       target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+    {% endif %}
+</div>

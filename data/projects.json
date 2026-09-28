@@ -1,0 +1,235 @@
+[
+  {
+    "slug": "cliqo",
+    "title": "Cliqo — Find Trusted Service Providers",
+    "category": "Web & mobile app",
+    "status": "",
+    "featured": false,
+    "image": "images/cliqo.jpg",
+    "icon": "bi-geo-alt",
+    "summary": "A web and mobile marketplace that helps people find trusted professionals for their service needs.",
+    "role": "Solo project — designed and built end to end.",
+    "overview": "Cliqo connects customers with trusted service providers. Users create an account, sign in, and find professionals for the job they need done — on the web or on their phone.",
+    "features": [
+      {
+        "title": "Find trusted providers",
+        "text": "Browse and find professionals for a service need."
+      },
+      {
+        "title": "User accounts",
+        "text": "Registration and secure sign-in for customers."
+      },
+      {
+        "title": "Web and mobile",
+        "text": "One product available in the browser and as a mobile app."
+      }
+    ],
+    "tech": [
+      "Web app",
+      "Mobile app (iOS & Android)"
+    ],
+    "challenges": "",
+    "links": {
+      "live": "",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "siteledger",
+    "title": "SiteLedger — Fuel & Asset Operations Platform",
+    "category": "Web backend · Team capstone",
+    "status": "",
+    "featured": false,
+    "image": "",
+    "icon": "bi-fuel-pump",
+    "summary": "A fuel and asset operations platform for Nigerian industrial sites — generators, tanks and deliveries — with a reconciliation engine that flags fuel variance and possible leakage.",
+    "role": "Backend Developer on the Full Stack team of a four-track capstone (Full Stack, Data Analytics, Cloud, Machine Learning) under the NCDMB Digitalization Initiative.",
+    "overview": "SiteLedger helps operators track fuel deliveries, tank dips and assets across multiple sites, then reconciles what was delivered against what was used to spot variances early. I owned the Flask backend: models, REST APIs, authentication and role-based access, and the maintenance and compliance module.",
+    "features": [
+      {
+        "title": "Auth & role-based access",
+        "text": "Login, roles and per-site access scoping so users only see the sites they manage."
+      },
+      {
+        "title": "Fuel & asset APIs",
+        "text": "REST endpoints for deliveries, dips, suppliers, generators, tanks and other site assets."
+      },
+      {
+        "title": "Variance & dashboard endpoints",
+        "text": "Exposes the Data team's Postgres reconciliation results and leaderboard to the frontend."
+      },
+      {
+        "title": "Maintenance & compliance",
+        "text": "Maintenance logs and schedules, compliance checklists, incident logging and automatic reminder notifications."
+      }
+    ],
+    "tech": [
+      "Python",
+      "Flask",
+      "SQLAlchemy",
+      "PostgreSQL (Neon)",
+      "REST API",
+      "Vercel"
+    ],
+    "challenges": "Aligning the backend models with a database schema owned by another team, moving from local SQLite to a shared cloud Postgres database without losing data, and deploying the API to Vercel on a custom subdomain.",
+    "links": {
+      "live": "https://siteledgermanagement.com",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "oil-gas-compliance-platform",
+    "title": "Oil & Gas Compliance Management Platform",
+    "category": "Desktop application",
+    "status": "",
+    "featured": true,
+    "image": "images/oilgas_dashboard.png",
+    "icon": "bi-gear-wide-connected",
+    "summary": "A Python desktop application for managing oil & gas equipment, maintenance schedules, vendor comparison, regulatory news, compliance automation and analytics.",
+    "role": "",
+    "overview": "This application was designed to improve operational efficiency by providing an integrated platform for managing oil and gas equipment, maintenance schedules, vendor information, regulatory news, compliance reports and weather advisories.",
+    "features": [
+      {
+        "title": "Equipment Management",
+        "text": "Register, update and monitor oil & gas equipment."
+      },
+      {
+        "title": "Maintenance Scheduling",
+        "text": "Record maintenance history and monitor equipment health."
+      },
+      {
+        "title": "Vendor Comparison",
+        "text": "Compare equipment prices from multiple vendors."
+      },
+      {
+        "title": "Regulatory News",
+        "text": "Automatically retrieves the latest industry news and updates."
+      },
+      {
+        "title": "Weather Advisory",
+        "text": "Displays weather conditions affecting field operations."
+      },
+      {
+        "title": "Analytics Dashboard",
+        "text": "Visualize maintenance trends and equipment performance."
+      }
+    ],
+    "tech": [
+      "Python",
+      "Tkinter",
+      "Pandas",
+      "BeautifulSoup",
+      "Selenium",
+      "Matplotlib",
+      "CSV"
+    ],
+    "challenges": "Managing persistent data with CSV files, integrating live regulatory news and weather information, automating web data retrieval, generating analytical charts, and packaging the application into a standalone Windows executable for distribution.",
+    "links": {
+      "live": "",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "prepbridge",
+    "title": "PrepBridge — Exam Prep Platform",
+    "category": "Web & mobile product",
+    "status": "In development",
+    "featured": false,
+    "image": "",
+    "icon": "bi-journal-bookmark",
+    "summary": "An edtech platform for Nigerian secondary school students that combines a WAEC, NECO and JAMB past-questions library with a marketplace for finding tutors.",
+    "role": "Founder — product definition, design and development.",
+    "overview": "PrepBridge is built for three kinds of users: students preparing for exams, tutors and teachers, and parents. It pairs a searchable past-questions bank with a two-sided tutor marketplace, across web and mobile.",
+    "features": [
+      {
+        "title": "Past-questions library",
+        "text": "WAEC, NECO and JAMB questions in one place."
+      },
+      {
+        "title": "Tutor marketplace",
+        "text": "Students and parents find and book tutors; tutors find students."
+      },
+      {
+        "title": "Built for three personas",
+        "text": "Separate journeys for students, tutors and parents."
+      }
+    ],
+    "tech": [
+      "Product design",
+      "Web",
+      "iOS & Android"
+    ],
+    "challenges": "",
+    "links": {
+      "live": "",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "portfolio-website",
+    "title": "Personal Portfolio Website",
+    "category": "Web application",
+    "status": "",
+    "featured": false,
+    "image": "images/portfolio.jpeg",
+    "icon": "bi-person-badge",
+    "summary": "This website — a responsive Flask portfolio where every project is stored as data, with a working contact form.",
+    "role": "",
+    "overview": "Built with Flask and Jinja templates on Bootstrap. Projects, skills and profile details are stored in JSON files, so new work is added without touching the HTML, and the contact form validates input, filters spam and delivers messages by email.",
+    "features": [
+      {
+        "title": "Data-driven content",
+        "text": "Projects and profile details live in JSON files."
+      },
+      {
+        "title": "Working contact form",
+        "text": "Validation, spam protection and email delivery."
+      },
+      {
+        "title": "Responsive & shareable",
+        "text": "Mobile-friendly layout with link previews for LinkedIn and WhatsApp."
+      }
+    ],
+    "tech": [
+      "Flask",
+      "Jinja",
+      "HTML",
+      "CSS",
+      "Bootstrap"
+    ],
+    "challenges": "",
+    "links": {
+      "live": "",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "masq-mobile-prototype",
+    "title": "MASQ Mobile Prototype",
+    "category": "UI/UX design",
+    "status": "",
+    "featured": false,
+    "image": "images/masq.png",
+    "icon": "bi-phone",
+    "summary": "A mobile application prototype focused on intuitive UI/UX, user-friendly navigation and clean layouts.",
+    "role": "",
+    "overview": "A mobile application prototype demonstrating intuitive UI/UX design, user-friendly navigation and clean layouts.",
+    "features": [],
+    "tech": [
+      "UI/UX",
+      "Prototype",
+      "Mobile Design"
+    ],
+    "challenges": "",
+    "links": {
+      "live": "",
+      "github": "",
+      "download": ""
+    }
+  }
+]
