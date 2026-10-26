@@ -2,8 +2,8 @@
   "name": "Abdulfatai Ibn Zachariya",
   "short_name": "Abdulfatai",
   "title": "Python & Backend Developer",
-  "tagline": "I build practical software — web backends, data tools and desktop applications — that solve real operational problems.",
-  "description": "Portfolio of Abdulfatai Ibn Zachariya, a Python & Backend Developer building Flask web apps, data tools and desktop software.",
+  "tagline": "I build practical software — web backends, mobile apps, data tools and desktop applications — that solve real problems.",
+  "description": "Portfolio of Abdulfatai Ibn Zachariya, a Python & Backend Developer building web apps, Android apps, data tools and desktop software.",
   "typing_roles": [
     "Python Developer",
     "Backend Developer (Flask)",
@@ -14,13 +14,13 @@
   "whatsapp_display": "+234 803 152 8212",
   "github": "https://github.com/ibnzachariya",
   "linkedin": "https://www.linkedin.com/in/abdulfatai-zachariya-145526374",
-  "formspree_id": "xqpawkna",
+  "formspree_id": "",
   "location": "Abuja, Nigeria",
-  "cv_file": "files/Abdulfatai_CV.pdf",
+  "cv_file": "files/Abdulfatai_Resume.pdf",
   "profile_image": "images/profile.jpg",
   "about": [
     "I'm a Python developer who came into software from Analytical Chemistry (MTech, Federal University of Technology, Minna). Lab work taught me to be methodical, to trust data, and to keep digging until a problem is actually solved — habits I bring to every codebase.",
-    "Today I build backends with Flask, SQLAlchemy and PostgreSQL, data tools with Pandas, and desktop applications with Tkinter. I recently built Cliqo, a web and mobile marketplace for finding trusted service providers, and I was the Backend Developer on SiteLedger, a fuel and asset operations platform built by a multi-team capstone through the NCDMB Digitalization Initiative (NDI).",
+    "Today I build backends with Flask, FastAPI and PostgreSQL, web frontends with React, native Android apps with Kotlin, and data tools with Pandas. I've built and launched Cliqo, a marketplace for trusted service providers; Cliqo Health, a low-cost remote-consultation platform; and CliqoCheck, an Android app with in-app payments. I'm also prototyping CheckAm, a tool to help NAFDAC fight fake products. Before that, I worked on SiteLedger, a fuel and asset operations platform built by a multi-team capstone through the NCDMB Digitalization Initiative (NDI), across both the backend and the frontend.",
     "I'm also a CAPM-certified project manager, hold an International Executive Certificate in Safety Management, and trained as a graphic designer — so I'm comfortable planning work, thinking about risk, and caring about how things look."
   ],
   "journey": [
@@ -52,6 +52,7 @@
       "items": [
         "Python",
         "Flask",
+        "FastAPI",
         "SQLAlchemy",
         "REST APIs",
         "PostgreSQL",
@@ -59,20 +60,13 @@
       ]
     },
     {
-      "group": "Data & Automation",
-      "icon": "bi-bar-chart",
+      "group": "Mobile & Frontend",
+      "icon": "bi-phone",
       "items": [
-        "Pandas",
-        "Matplotlib",
-        "Selenium",
-        "BeautifulSoup"
-      ]
-    },
-    {
-      "group": "Desktop & Frontend",
-      "icon": "bi-window",
-      "items": [
-        "Tkinter",
+        "Kotlin",
+        "Jetpack Compose",
+        "React",
+        "Vite",
         "HTML",
         "CSS",
         "Bootstrap",
@@ -80,15 +74,31 @@
       ]
     },
     {
+      "group": "Data & Desktop",
+      "icon": "bi-bar-chart",
+      "items": [
+        "Pandas",
+        "Matplotlib",
+        "Selenium",
+        "BeautifulSoup",
+        "Tkinter"
+      ]
+    },
+    {
       "group": "Tools & Delivery",
       "icon": "bi-tools",
       "items": [
         "Git & GitHub",
+        "GitHub Actions",
         "Vercel",
+        "Railway",
+        "Neon",
+        "Netlify",
+        "Cloudflare (Pages, Workers, R2)",
+        "Paystack",
         "Notion",
         "ClickUp",
-        "Graphic Design",
-        "Slack"
+        "Graphic Design"
       ]
     }
   ],

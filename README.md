@@ -41,7 +41,7 @@ The order of projects in the file is the order they appear on the site.
 
 ## Replace your CV or profile photo
 
-Overwrite `public/static/files/Abdulfatai_CV.pdf` or `public/static/images/profile.jpg` with a file of the
+Overwrite `public/static/files/Abdulfatai_Resume.pdf` or `public/static/images/profile.jpg` with a file of the
 same name, or put in a new file and update `cv_file` / `profile_image` in `data/site.json`.
 
 ## Add a certificate
@@ -60,7 +60,9 @@ GitHub and LinkedIn are already set in `data/site.json`. For each project in
 
 ## Contact form
 
-Messages are delivered by **Formspree** (set `FORMSPREE_ID`) or by **Gmail** (set
+Messages are sent from the visitor's browser straight to **Formspree**. Put your form ID in
+`data/site.json` → `formspree_id` (or set a `FORMSPREE_ID` environment variable, which wins if both
+are set). Without JavaScript, the form falls back to the Flask route, which can also send by **Gmail** (set
 `MAIL_USERNAME`, `MAIL_PASSWORD` — a Google *App Password*, not your normal password).
 See `.env.example`. If neither is set, visitors see a friendly message with your email address.
 
@@ -71,7 +73,6 @@ See `.env.example`. If neither is set, visitors see a friendly message with your
    automatically — leave all build settings as they are.
 3. Before clicking Deploy, open **Environment Variables** and add:
    - `SECRET_KEY` — a long random string (required, or the contact form will fail)
-   - `FORMSPREE_ID` — from formspree.io
 4. Deploy. Every `git push` after that redeploys automatically.
 5. Optional: Project → Settings → Domains to add your own domain.
 

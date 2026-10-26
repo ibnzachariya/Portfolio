@@ -7,30 +7,125 @@
     "featured": false,
     "image": "images/cliqo.jpg",
     "icon": "bi-geo-alt",
-    "summary": "A web and mobile marketplace that helps people find trusted professionals for their service needs.",
+    "summary": "A web and mobile marketplace that helps people find trusted service providers — \"Whatever you need… just Cliq it.\"",
     "role": "Solo project — designed and built end to end.",
-    "overview": "Cliqo connects customers with trusted service providers. Users create an account, sign in, and find professionals for the job they need done — on the web or on their phone.",
+    "overview": "Cliqo connects customers with trusted service providers. Customers sign up, find professionals for the job they need done and pay securely in the app, on the web or on their phone. It has an owner admin area with sub-admin roles for helpers.",
     "features": [
       {
         "title": "Find trusted providers",
         "text": "Browse and find professionals for a service need."
       },
       {
-        "title": "User accounts",
-        "text": "Registration and secure sign-in for customers."
+        "title": "Secure payments",
+        "text": "In-app payments through Paystack."
+      },
+      {
+        "title": "Admin & sub-admins",
+        "text": "Owner admin area with sub-admin roles for helpers."
       },
       {
         "title": "Web and mobile",
-        "text": "One product available in the browser and as a mobile app."
+        "text": "Runs in the browser, with an Android app downloadable from the website."
       }
     ],
     "tech": [
-      "Web app",
-      "Mobile app (iOS & Android)"
+      "FastAPI",
+      "PostgreSQL (Neon)",
+      "React",
+      "Vite",
+      "Paystack",
+      "Railway",
+      "Cloudflare"
+    ],
+    "challenges": "Deploying on free tiers without a card: frontend on Cloudflare, backend on Railway and the database on Neon, on the custom domain cliqo.com.ng.",
+    "links": {
+      "live": "https://cliqo.com.ng",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "cliqo-health",
+    "title": "Cliqo Health — Remote Consultation Platform",
+    "category": "Web & mobile app",
+    "status": "",
+    "featured": false,
+    "image": "images/cliqo-health.jpg",
+    "icon": "bi-heart-pulse",
+    "summary": "A web and mobile platform for free or low-cost remote consultation, test-result explanation and therapy with verified Nigerian health workers.",
+    "role": "Solo project: product design and development.",
+    "overview": "Cliqo Health connects patients with verified providers for remote consultation, advice, test-result interpretation and therapy. It doesn't handle physical treatment. Providers register with proof of their profession and agree to near-free rates. Patients get free credits on sign-up, then pay as they go, and the patient and provider agree on how to meet: chat, voice, video or group therapy. Motto: \"By the Ummah, For the Ummah.\"",
+    "features": [
+      {
+        "title": "Verified health workers",
+        "text": "Doctors, nurses, pharmacists, therapists and others register with proof of licence; new professions can be added at sign-up."
+      },
+      {
+        "title": "Flexible consultations",
+        "text": "Chat, voice call, video or group sessions, chosen by patient and health worker together."
+      },
+      {
+        "title": "Free credits",
+        "text": "10 free credits on sign-up, then small pay-as-you-go top-ups with a 5% platform fee."
+      },
+      {
+        "title": "Local languages",
+        "text": "Interface available in English and Nigerian Pidgin."
+      }
+    ],
+    "tech": [
+      "Railway",
+      "PostgreSQL (Neon)",
+      "Cloudflare Workers",
+      "Cloudflare R2"
+    ],
+    "challenges": "Splitting hosting across free tiers: API on Railway, database on Neon, the web app as a Cloudflare Worker, and uploaded files moved to Cloudflare R2.",
+    "links": {
+      "live": "https://health.cliqo.com.ng",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
+    "slug": "cliqocheck",
+    "title": "CliqoCheck — App Activity Tracker",
+    "category": "Native Android app",
+    "status": "",
+    "featured": false,
+    "image": "",
+    "icon": "bi-phone-vibrate",
+    "summary": "A native Android app that shows which apps have been opened on a phone, with timestamps, plus a premium App Lock with intruder selfie.",
+    "role": "Solo project: designed, built, launched and monetised it.",
+    "overview": "CliqoCheck reads Android's own usage history to show which apps were opened and when. It's free to use, with a one-time premium unlock (paid in-app via Paystack) for App Lock: lock any app behind a PIN, and a wrong PIN snaps a selfie of whoever tried. It's publicly launched and distributed as a signed APK from its own download page.",
+    "features": [
+      {
+        "title": "App activity history",
+        "text": "See which apps were opened on the phone, with timestamps."
+      },
+      {
+        "title": "App Lock + intruder selfie",
+        "text": "Lock apps behind a PIN; a wrong PIN takes a selfie."
+      },
+      {
+        "title": "In-app payments",
+        "text": "One-time premium unlock via Paystack (card, transfer or USSD), unlocked instantly."
+      },
+      {
+        "title": "Cloud-built releases",
+        "text": "Signed APKs built automatically with GitHub Actions."
+      }
+    ],
+    "tech": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Android UsageStatsManager",
+      "Paystack",
+      "GitHub Actions",
+      "Netlify"
     ],
     "challenges": "",
     "links": {
-      "live": "",
+      "live": "https://cliqocheq.netlify.app",
       "github": "",
       "download": ""
     }
@@ -38,14 +133,14 @@
   {
     "slug": "siteledger",
     "title": "SiteLedger — Fuel & Asset Operations Platform",
-    "category": "Web backend · Team capstone",
+    "category": "Full-stack web app · Team capstone",
     "status": "",
-    "featured": false,
-    "image": "",
+    "featured": true,
+    "image": "images/siteledger.jpg",
     "icon": "bi-fuel-pump",
     "summary": "A fuel and asset operations platform for Nigerian industrial sites — generators, tanks and deliveries — with a reconciliation engine that flags fuel variance and possible leakage.",
-    "role": "Backend Developer on the Full Stack team of a four-track capstone (Full Stack, Data Analytics, Cloud, Machine Learning) under the NCDMB Digitalization Initiative.",
-    "overview": "SiteLedger helps operators track fuel deliveries, tank dips and assets across multiple sites, then reconciles what was delivered against what was used to spot variances early. I owned the Flask backend: models, REST APIs, authentication and role-based access, and the maintenance and compliance module.",
+    "role": "Started as Backend Developer on the Full Stack team of a four-track capstone (Full Stack, Data Analytics, Cloud, Machine Learning) under the NCDMB Digitalization Initiative, then took over the frontend as well.",
+    "overview": "SiteLedger helps operators track fuel deliveries, tank dips and assets across multiple sites, then reconciles what was delivered against what was used to spot variances, such as fuel theft, early. I built the Flask backend (models, REST APIs, authentication and role-based access, and the maintenance and compliance module) and later took on the frontend too.",
     "features": [
       {
         "title": "Auth & role-based access",
@@ -80,11 +175,52 @@
     }
   },
   {
+    "slug": "checkam",
+    "title": "CheckAm — Fake Product Checker for NAFDAC",
+    "category": "Web app · Pilot prototype",
+    "status": "Prototype",
+    "featured": false,
+    "image": "images/checkam.jpg",
+    "icon": "bi-patch-check",
+    "summary": "A prototype that lets Nigerians check foods, drinks and drugs in seconds, and sends every suspected fake straight to NAFDAC.",
+    "role": "Solo project: concept, design and prototype, prepared as a pilot to pitch to NAFDAC.",
+    "overview": "Fake foods, drinks and drugs are a serious problem in Nigeria. CheckAm lets a shopper scan a product's barcode or QR code, type its NAFDAC number or scratch PIN, or photograph the pack for an AI check, and tag where they bought it. When a product looks fake, the report appears on the NAFDAC desk immediately, on every device that has it open. The prototype runs on invented sample data.",
+    "features": [
+      {
+        "title": "Scan or type a code",
+        "text": "Barcode, QR code, NAFDAC number or scratch PIN."
+      },
+      {
+        "title": "AI pack inspection",
+        "text": "Photograph the pack and AI looks for signs of a fake."
+      },
+      {
+        "title": "Instant NAFDAC alerts",
+        "text": "Suspected fakes, with location and market, appear live on the NAFDAC desk."
+      },
+      {
+        "title": "Four views",
+        "text": "Shopper app, NAFDAC desk, manufacturer and pharmacy/trader views, with language options."
+      }
+    ],
+    "tech": [
+      "Web app",
+      "Real-time updates",
+      "AI image check"
+    ],
+    "challenges": "",
+    "links": {
+      "live": "",
+      "github": "",
+      "download": ""
+    }
+  },
+  {
     "slug": "oil-gas-compliance-platform",
     "title": "Oil & Gas Compliance Management Platform",
     "category": "Desktop application",
     "status": "",
-    "featured": true,
+    "featured": false,
     "image": "images/oilgas_dashboard.png",
     "icon": "bi-gear-wide-connected",
     "summary": "A Python desktop application for managing oil & gas equipment, maintenance schedules, vendor comparison, regulatory news, compliance automation and analytics.",
