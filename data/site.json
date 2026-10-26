@@ -14,9 +14,10 @@
   "whatsapp_display": "+234 803 152 8212",
   "github": "https://github.com/ibnzachariya",
   "linkedin": "https://www.linkedin.com/in/abdulfatai-zachariya-145526374",
-  "formspree_id": "xqpawkna",
+  "formspree_id": "",
   "location": "Abuja, Nigeria",
-  "cv_file": "files/Abdulfatai_Resume.pdf",
+  "resume_file": "files/Abdulfatai_Saka_Resume.pdf",
+  "cv_file": "files/Abdulfatai_Saka_CV.pdf",
   "profile_image": "images/profile.jpg",
   "about": [
     "I'm a Python developer who came into software from Analytical Chemistry (MTech, Federal University of Technology, Minna). Lab work taught me to be methodical, to trust data, and to keep digging until a problem is actually solved — habits I bring to every codebase.",

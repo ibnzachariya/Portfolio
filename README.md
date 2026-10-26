@@ -41,8 +41,8 @@ The order of projects in the file is the order they appear on the site.
 
 ## Replace your CV or profile photo
 
-Overwrite `public/static/files/Abdulfatai_Resume.pdf` or `public/static/images/profile.jpg` with a file of the
-same name, or put in a new file and update `cv_file` / `profile_image` in `data/site.json`.
+Overwrite `public/static/files/Abdulfatai_Saka_Resume.pdf`, `Abdulfatai_Saka_CV.pdf` or `public/static/images/profile.jpg` with a file of the
+same name, or put in a new file and update `resume_file` / `cv_file` / `profile_image` in `data/site.json`.
 
 ## Add a certificate
 
